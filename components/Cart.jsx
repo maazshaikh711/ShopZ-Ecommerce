@@ -67,17 +67,24 @@ const Cart = () => {
               <div className="item-desc">
                 <div className="flex top">
                   <h5>{item.name}</h5>
-                  <h4>${item.price}</h4>
+                  <h4>₹{item.price}</h4>
                 </div>
                 <div className="flex bottom">
                   <div>
-                  <p className="quantity-desc">
+                  {/* <p className="quantity-desc">
                     <span className="minus" onClick={() => toggleCartItemQuanitity(item._id, 'dec') }>
                     <AiOutlineMinus />
                     </span>
                     <span className="num" onClick="">{item.quantity}</span>
                     <span className="plus" onClick={() => toggleCartItemQuanitity(item._id, 'inc') }><AiOutlinePlus /></span>
-                  </p>
+                  </p> */}
+                  <button data-action="decrement" class=" bg-gray-100 text-red-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none" onClick={() => toggleCartItemQuanitity(item._id, 'dec') }>
+                    <span class="m-auto text-2xl font-thin"><AiOutlineMinus /></span>
+                  </button>
+                  <span className="mt-3 mr-3 ml-3">{item.quantity}</span>
+                <button data-action="increment" class="bg-gray-100 text-green-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer  border-right: 1px solid gray;"onClick={() => toggleCartItemQuanitity(item._id, 'inc') } >
+                  <span class="m-auto text-2xl font-thin"><AiOutlinePlus /></span>
+                </button>
                   </div>
                   <button
                     type="button"
@@ -95,10 +102,10 @@ const Cart = () => {
           <div className="cart-bottom">
             <div className="total">
               <h3>Subtotal:</h3>
-              <h3>${totalPrice}</h3>
+              <h3>₹{totalPrice}</h3>
             </div>
             <div className="btn-container">
-              <button type="button" className="btn" onClick={handleCheckout}>
+              <button type="button" className=" btn bg-indigo-500 rounded-full w-6 h-15" onClick={handleCheckout}>
                 Pay with Stripe
               </button>
             </div>
